@@ -1,0 +1,58 @@
+body.signin-body{
+    background-color:#FCFEFF;
+}
+
+.container.signin-container{
+    margin-top: 5%;
+
+}
+
+.card.signin-card{
+    padding: 40px 0 20px;
+    background-color: #d8edff ;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, .30);
+    -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, .30);
+    -moz-box-shadow: 2px 2px 5px rgba(0, 0, 0, .30);
+}
+
+.signin-header{
+    display: block;
+    font-size: x-large;
+    text-align: center;
+    padding-bottom: 30px;
+    font-family: inherit;
+}
+
+img.signin-img{
+    padding-bottom: 10px;
+    display: block;
+    margin:auto;
+}
+
+.signin-form{
+    padding-bottom: 20px;
+    max-width: 500px;
+    margin: auto;
+}
+
+.signin-chk-box{
+    float: left;
+}
+
+.signin-btn{
+    display: block;
+    margin: auto;
+}
+
+.signin-help{
+    display: block;
+    margin: auto;
+    text-align: center;
+    font-family: inherit;
+}
+
+.create-acc{
+    display: block;
+    margin: auto;
+    text-align: center;
+}

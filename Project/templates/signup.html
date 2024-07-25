@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Healthyfy | SignUp</title>
+    <link rel="icon" href="{{url_for('static',filename='assets/healthcare-2.png')}}" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-4.5.2-dist/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-4.5.2-dist/css/bootstrap-grid.css')}}">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style-signin.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style-home.css')}}">
+</head>
+<body class="signin-body">
+<div>
+    <nav class="navbar navbar-light navbar-expand fixed-top nav-custom">
+        <a class="navbar-brand" href="home.html">
+            <img src="{{url_for('static',filename='assets/healthcare-2.png')}}" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+            Healthyfy
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <div class="my-2 my-lg-0">
+                <button type="button" class="btn btn-primary btn-sm" onclick="location.href='/signin';">Sign In</button>
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="container signin-container" style="padding-bottom: 18px">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-sm-12 col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <img src="{{url_for('static',filename='assets/healthcare-1.png')}}" class="img-fluid signin-img">
+                    <div class="signin-header">Create Account</div>
+                    <form class="signin-form" method="post" action="/home">
+                        <div class="form-group">
+                            <label for="signin-email">Email address</label>
+                            <input type="email" class="form-control" id="signin-email" name="email" placeholder="Your email here!">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="signin-password">Password</label>
+                            <input type="password" class="form-control" id="signin-password" name="password" placeholder="Your secret here!">
+                        </div>
+                        <div class="form-group">
+                            <label for="signin-password">Confirm Password</label>
+                            <input type="password" class="form-control" id="signin-password-confirm" name="confirmPassword" placeholder="Confirm your secret here!">
+                        </div>
+                        <!--<button type="submit" class="btn btn-primary signin-btn ">Sign in</button>-->
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">Sign Up</button>
+                        <br>
+                        <a href="#" class="signin-help">Need Help?</a>
+                        <div class="create-acc">
+                            <small class="form-text text-muted">Already a member?</small>
+                            <a href="signin.html">Sign In</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="home.html">
+        <img src="{{url_for('static',filename='assets/healthcare-2.png')}}" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+        Healthyfy
+    </a>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#"></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"></a>
+            </li>
+        </ul>
+        <span class="navbar-text">
+      TARP PROJECT
+    </span>
+    </div>
+</nav>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script src="{{url_for('static',filename='bootstrap-4.5.2-dist/js/bootstrap.min.js')}}"></script>
+</body>
+</html>

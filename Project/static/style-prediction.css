@@ -1,0 +1,6 @@
+.bg-result-color{
+    background-color: #007BFF;
+    -webkit-box-shadow: 0 12px 10px -8px #7D8D92;
+    -moz-box-shadow: 0 12px 10px -8px #7D8D92;
+    box-shadow: 0 12px 10px -8px #7D8D92;
+}

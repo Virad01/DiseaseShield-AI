@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lung Cancer Prediction</title>
+    <link rel="icon" href="{{url_for('static',filename='assets/healthcare-2.png')}}" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-4.5.2-dist/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-4.5.2-dist/css/bootstrap-grid.css')}}">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style-prediction.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style-home.css')}}">
+</head>
+<body>
+<div>
+    <nav class="navbar navbar-light navbar-expand fixed-top nav-custom">
+        <a class="navbar-brand" href="home.html">
+            <img src="{{url_for('static',filename='assets/healthcare-2.png')}}" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+            Healthyfy
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/homeredirect">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/homeredirect#about-us">About Us</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Tools
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/coronary-heart-disease-prediction-form">Coronary Heat Disease Prediction</a>
+                        <a class="dropdown-item" href="/diabetes-prediction-form">Diabetes Prediction for Woman</a>
+                    </div>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" style="color:#007BFF" href="#">Lung Cancer Prediction  <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+            <div class="my-2 my-lg-0">
+                <button type="button" class="btn btn-primary btn-sm" onclick="location.href='/logout';">Log Out</button>
+            </div>
+        </div>
+    </nav>
+</div>
+<br>
+<br>
+<br>
+<br>
+<div>
+<h3 style="text-align: center">Lung Cancer Prediction</h3>
+</div>
+<div class="row" style="padding-top: 15px;">
+    <div class="col-8" style="padding-left: 50px">
+        <div class="card">
+            <div class="card-body">
+                <form method="post" action="/lungCancerPrediction">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="mobile">Mobile</label>
+                            <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Your Mobile number" required>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="age">Age</label>
+                            <input type="number" class="form-control form-control-sm" id="age" placeholder="Your Age" style="width: min-content" name="age" required>
+                        </div>
+                        <fieldset class="form-group col-md-4">
+                            <label>Gender</label>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="gender" id="male" value="1">
+                                        <label class="form-check-label" for="male">
+                                            Male
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="gender" id="female" value="0">
+                                        <label class="form-check-label" for="female">
+                                            Female
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="form-group col-md-4">
+                            <label>Chest Pain?</label>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="chestPain" id="chest_pain_yes" value="2">
+                                        <label class="form-check-label" for="chest_pain_yes">
+                                            Yes
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="chestPain" id="chest_pain_no" value="1">
+                                        <label class="form-check-label" for="chest_pain_no">
+                                            No
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <br>
+                    <div class="form-row">
+                        <fieldset class="form-group col-md-4">
+                            <label>Do you smoke?</label>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="smoking" id="smoking_yes" value="2">
+                                        <label class="form-check-label" for="smoking_yes">
+                                            Yes
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="smoking" id="smoking_no" value="1">
+                                        <label class="form-check-label" for="smoking_no">
+                                            No
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="form-group col-md-4">
+                            <label>Yellow Fingers?</label>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="yellowFingers" id="yellow_fingers_yes" value="2">
+                                        <label class="form-check-label" for="yellow_fingers_yes">
+                                            Yes
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="yellowFingers" id="yellow_fingers_no" value="1">
+                                        <label class="form-check-label" for="yellow_fingers_no">
+                                            No
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="form-group col-md-4">
+                            <label>Anxiety?</label>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="anxiety" id="anxiety_yes" value="2">
+                                        <label class="form-check-label" for="anxiety_yes">
+                                            Yes
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="anxiety" id="anxiety_no" value="1">
+                                        <label class="form-check-label" for="anxiety_no">
+                                            No
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <br>
+                    <div class="form-row">
+                        <fieldset class="form-group col-md-4">
+                            <label>Peer Pressure?</label>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="peerPressure" id="peer_pressure_yes" value="2">
+                                        <label class="form-check-label" for="peer_pressure_yes">
+                                            Yes
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="peerPressure" id="peer_pressure_no" value="1">
+                                        <label class="form-check-label" for="peer_pressure_no">
+                                            No
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="form-group col-md-4">
+                            <label>Chronic Disease?</label>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="chronicDisease" id="chronic_disease_yes" value="2">
+                                        <label class="form-check-label" for="chronic_disease_yes">
+                                            Yes
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="chronicDisease" id="chronic_disease_no" value="1">
+                                        <label class="form-check-label" for="chronic_disease_no">
+                                            No
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="form-group col-md-4">
+                            <label>Fatigue?</label>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="fatigue" id="fatigue_yes" value="2">
+                                        <label class="form-check-label" for="fatigue_yes">
+                                            Yes
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="fatigue" id="fatigue_no" value="1">
+                                        <label class="form-check-label" for="fatigue_no">
+                                            No
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <br>
+                    <div class="form-row">
+                        <fieldset class="form-group col-md-4">
+                            <label>Allergy?</label>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="allergy" id="allergy_yes" value="2">
+                                        <label class="form-check-label" for="allergy_yes">
+                                            Yes
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="allergy" id="allergy_no" value="1">
+                                        <label class="form-check-label" for="allergy_no">
+                                            No
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="form-group col-md-4">
+                            <label>Wheezing?</label>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="wheezing" id="wheezing_yes" value="2">
+                                        <label class="form-check-label" for="wheezing_yes">
+                                            Yes
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="wheezing" id="wheezing_no" value="1">
+                                        <label class="form-check-label" for="wheezing_no">
+                                            No
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="form-group col-md-4">
+                            <label>Alcohol Consumption?</label>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="alcohol" id="alcohol_yes" value="2">
+                                        <label class="form-check-label" for="alcohol_yes">
+                                            Yes
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="alcohol" id="alcohol_no" value="1">
+                                        <label class="form-check-label" for="alcohol_no">
+                                            No
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <br>
+                    <div class="form-row">
+                        <fieldset class="form-group col-md-4">
+                            <label>Coughing?</label>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="coughing" id="coughing_yes" value="2">
+                                        <label class="form-check-label" for="coughing_yes">
+                                            Yes
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="coughing" id="coughing_no" value="1">
+                                        <label class="form-check-label" for="coughing_no">
+                                            No
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="form-group col-md-4">
+                            <label>Shortness of Breath?</label>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="shortnessOfBreath" id="breath_yes" value="2">
+                                        <label class="form-check-label" for="breath_yes">
+                                            Yes
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="shortnessOfBreath" id="breath_no" value="1">
+                                        <label class="form-check-label" for="breath_no">
+                                            No
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="form-group col-md-4">
+                            <label>Swallowing Difficulty?</label>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="swallowingDifficulty" id="swallowing_diff_yes" value="2">
+                                        <label class="form-check-label" for="swallowing_diff_yes">
+                                            Yes
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="swallowingDifficulty" id="swallowing_diff_no" value="1">
+                                        <label class="form-check-label" for="swallowing_diff_no">
+                                            No
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <button type="submit" class="btn btn-primary btn-block" style="float: right">Predict!</button>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <button type="reset" class="btn btn-danger btn-block">Reset!</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-4" style="padding-left: 100px;">
+        <div class="card text-white bg-result-color mb-3" style="max-width: 18rem; text-align: center">
+            <div class="card-header">Lung Cancer Prediction</div>
+            <div class="card-body">
+                <h5 class="card-title">Result</h5>
+                <p class="card-text" id="lung-cancer-prediction-result">The result goes here</p>
+                <p class="card-text" id="lung-cancer-prediction-result2">{{data}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+        <img src="{{url_for('static',filename='assets/healthcare-2.png')}}" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+        Healthyfy
+    </a>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#"></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"></a>
+            </li>
+        </ul>
+        <span class="navbar-text">
+      TARP PROJECT
+    </span>
+    </div>
+</nav>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script src="{{url_for('static',filename='bootstrap-4.5.2-dist/js/bootstrap.min.js')}}"></script>
+</body>
+</html>

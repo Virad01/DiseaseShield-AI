@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Coronary Heart Disease Prediction</title>
+    <link rel="icon" href="{{url_for('static',filename='assets/healthcare-2.png')}}" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-4.5.2-dist/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-4.5.2-dist/css/bootstrap-grid.css')}}">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style-prediction.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style-home.css')}}">
+</head>
+<body>
+<div>
+    <nav class="navbar navbar-light navbar-expand fixed-top nav-custom">
+        <a class="navbar-brand" href="home.html">
+            <img src="{{url_for('static', filename='assets/healthcare-2.png')}}" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+            Healthyfy
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/homeredirect">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/homeredirect#about-us">About Us</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Tools
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/lung-cancer-prediction-form">Lung Cancer Prediction</a>
+                        <a class="dropdown-item" href="/diabetes-prediction-form">Diabetes Prediction for Woman</a>
+                    </div>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" style="color:#007BFF" href="#">Coronary Heart Disease Prediction <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+            <div class="my-2 my-lg-0">
+                <button type="button" class="btn btn-primary btn-sm" onclick="location.href='/logout';">Log Out</button>
+            </div>
+        </div>
+    </nav>
+</div>
+<br>
+<br>
+<br>
+<br>
+<div>
+    <h3 style="text-align: center">Coronary Heart Disease Prediction</h3>
+</div>
+<div class="row" style="padding-top: 15px;">
+    <div class="col-8" style="padding-left: 50px">
+        <div class="card">
+            <div class="card-body">
+                <form method="post" action="/heartDiseasePrediction">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Your Name">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="mobile">Mobile</label>
+                            <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Your Mobile number">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="age">Age</label>
+                            <input type="number" class="form-control form-control-sm" style="width: 200px" id="age" name="age" placeholder="Your Age" style="width: min-content" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputState">Education</label>
+                            <select id="inputState" name="education" class="form-control form-control-sm" style="width: 200px" required>
+                                <option value="none" selected disabled hidden>
+                                  Select an Option
+                                </option>
+                                <option value="0">None</option>
+                                <option value="1">Primary education(Class 1 to 5)</option>
+                                <option value="2">Secondary education(Class 6 to 10)</option>
+                                <option value="3">Higher Secondary education(Class 11/12)</option>
+                                <option value="4">Graduation or Post-Graduation</option>
+                            </select>
+                        </div>
+                        <fieldset class="form-group col-md-4">
+                            <label>Gender</label>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="gender" id="male" value="1">
+                                        <label class="form-check-label" for="male">
+                                            Male
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="gender" id="female" value="0">
+                                        <label class="form-check-label" for="female">
+                                            Female
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <br>
+                    <div class="form-row">
+                        <fieldset class="form-group col-md-4">
+                            <label>Do you smoke?</label>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="currentSmoker" id="smoking_yes" value="1">
+                                        <label class="form-check-label" for="smoking_yes">
+                                            Yes
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="currentSmoker" id="smoking_no" value="0">
+                                        <label class="form-check-label" for="smoking_no">
+                                            No
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="form-group col-md-4">
+                            <label for="age">Number of Cigars/Day</label>
+                            <input type="number" class="form-control form-control-sm" style="width: 200px" id="num_cigars" placeholder="Number of Cigars/Day" style="width: min-content" name="cigsPerDay">
+                        </div>
+                        <fieldset class="form-group col-md-4">
+                            <label>Undergoing BP Medication?</label>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="BPMeds" id="bp_medication_yes" value="1" >
+                                        <label class="form-check-label" for="bp_medication_yes">
+                                            Yes
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="BPMeds" id="bp_medication_no" value="0">
+                                        <label class="form-check-label" for="bp_medication_no">
+                                            No
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <br>
+                    <div class="form-row">
+                        <fieldset class="form-group col-md-4">
+                            <label>Heart Stroke in the past?</label>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="prevalentStroke" id="heart_stroke_yes" value="1">
+                                        <label class="form-check-label" for="heart_stroke_yes">
+                                            Yes
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="prevalentStroke" id="heart_stroke_no" value="0">
+                                        <label class="form-check-label" for="heart_stroke_no">
+                                            No
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="form-group col-md-4">
+                            <label>BP/ Hypertension?</label>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="prevalentHyp" id="bp_tension_yes" value="1">
+                                        <label class="form-check-label" for="bp_tension_yes">
+                                            Yes
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="prevalentHyp" id="bp_tension_no" value="0">
+                                        <label class="form-check-label" for="bp_tension_no">
+                                            No
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="form-group col-md-4">
+                            <label>Have Diabetes?</label>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="diabetic" id="diabetic_yes" value="1">
+                                        <label class="form-check-label" for="diabetic_yes">
+                                            Yes
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="diabetic" id="diabetic_no" value="0">
+                                        <label class="form-check-label" for="diabetic_no">
+                                            No
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <br>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="age">Enter your total cholesterol level (in mg/dL)</label>
+                            <input type="number" step="any" class="form-control form-control-sm" style="width: 200px" id="cholesterol" placeholder="in mg/dL" style="width: min-content" name="totChol" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="age">Enter your systolic blood pressure (in mm Hg)</label>
+                            <input type="number" step="any" class="form-control form-control-sm" style="width: 200px" id="sys_bp" placeholder="in mm Hg" style="width: min-content" name="sysBP" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="age">Enter your diastolic blood pressure (in mm Hg)</label>
+                            <input type="number" step="any" class="form-control form-control-sm" style="width: 200px" id="dis_bp" placeholder="in mm Hg" style="width: min-content" name="diaBP" required>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="age">Enter your Body Mass Index (BMI)(in kg/m<sup>2</sup>)</label>
+                            <input type="number" step="any" class="form-control form-control-sm" style="width: 200px" id="bmi" placeholder="in kg/m^2" style="width: min-content" name="BMI" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="age">Enter your heart rate( in beats/minute)</label>
+                            <input type="number" step="any" class="form-control form-control-sm" style="width: 200px" id="heart_rate" placeholder="in beats/minute" style="width: min-content" name="heartRate" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="age">Enter your glucose level (fasting blood sugar level) (in mg/dL)</label>
+                            <input type="number" step="any" class="form-control form-control-sm" style="width: 200px" id="sugar_level" placeholder="in mg/dL" style="width: min-content" name="glucose" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <button type="submit" class="btn btn-primary btn-block" style="float: right">Predict!</button>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <button type="reset" class="btn btn-danger btn-block">Reset!</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-4" style="padding-left: 100px;">
+        <div class="card text-white bg-result-color mb-3" style="max-width: 18rem; text-align: center">
+            <div class="card-header">Coronary Heart Disease Prediction</div>
+            <div class="card-body">
+                <h5 class="card-title">Result</h5>
+                <p class="card-text" id="coronary-heart-disease-prediction-result">The result goes here</p>
+                <p class="card-text" id="coronary-heart-disease-prediction-result2">{{data}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+        <img src="{{url_for('static',filename='assets/healthcare-2.png')}}" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+        Healthyfy
+    </a>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#"></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"></a>
+            </li>
+        </ul>
+        <span class="navbar-text">
+      TARP PROJECT
+    </span>
+    </div>
+</nav>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script src="{{url_for('static',filename='bootstrap-4.5.2-dist/js/bootstrap.min.js')}}"></script>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Diabetes Prediction</title>
+    <link rel="icon" href="{{url_for('static',filename='assets/healthcare-2.png')}}" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-4.5.2-dist/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-4.5.2-dist/css/bootstrap-grid.css')}}">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style-prediction.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style-home.css')}}">
+</head>
+<body>
+<div>
+    <nav class="navbar navbar-light navbar-expand fixed-top nav-custom">
+        <a class="navbar-brand" href="/homeredirect">
+            <img src="{{url_for('static',filename='assets/healthcare-2.png')}}" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+            Healthyfy
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/homeredirect">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/homeredirect#about-us">About Us</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Tools
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/lung-cancer-prediction-form">Lung Cancer Prediction</a>
+                        <a class="dropdown-item" href="/coronary-heart-disease-prediction-form">Coronary Heat Disease Prediction</a>
+                    </div>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" style="color:#007BFF" href="#">Diabetes Prediction for woman<span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+            <div class="my-2 my-lg-0">
+                <button type="button" class="btn btn-primary btn-sm" onclick="location.href='/logout';">Log Out</button>
+            </div>
+        </div>
+    </nav>
+</div>
+<br>
+<br>
+<br>
+<br>
+<div>
+    <h3 style="text-align: center">Diabetes Prediction for Woman</h3>
+</div>
+<div class="row" style="padding-top: 15px;">
+    <div class="col-8" style="padding-left: 50px">
+        <div class="card">
+            <div class="card-body">
+                <form method="post" action="/diabetesPrediction">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Your Name">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="mobile">Mobile</label>
+                            <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Your Mobile number">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="age">Age</label>
+                            <input type="number" class="form-control form-control-sm" style="width: 200px" id="age" placeholder="Your Age" style="width: min-content" name="age">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="age">Number of Pregnancies</label>
+                            <input type="number" class="form-control form-control-sm" style="width: 200px" id="num_pregnancies" placeholder="Number of Pregnancies" style="width: min-content" name="pregnancies">
+                        </div>
+                        <fieldset class="form-group col-md-4">
+                            <label>Is any of your immediate family member diabetic? (Diabetes Pedigree Function)</label>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="pedigreefn" id="diabetes_yes" value="1">
+                                        <label class="form-check-label" for="diabetes_yes">
+                                            Yes
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="pedigreefn" id="diabetes_no" value="0">
+                                        <label class="form-check-label" for="diabetes_no">
+                                            No
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <br>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="age">Enter the Insulin amount</label>
+                            <input type="number" class="form-control form-control-sm" style="width: 200px" id="insulin" placeholder="" style="width: min-content" name="insulin">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="age">Skin Thickness (in mm)</label>
+                            <input type="number" class="form-control form-control-sm" style="width: 200px" id="skin_thickness" placeholder="in mm" style="width: min-content" name="skinThickness">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="age">Enter your glucose level (fasting blood sugar level) (in mg/dL)</label>
+                            <input type="number" class="form-control form-control-sm" style="width: 200px" id="sugar_level" placeholder="in mg/dL" style="width: min-content" name="glucose">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="age">Enter your body blood pressure (in mm Hg)</label>
+                            <input type="number" class="form-control form-control-sm" style="width: 200px" id="bp" placeholder="in mm Hg" style="width: min-content" name="bloodPressure">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="age">Enter your Body Mass Index (BMI)(in kg/m<sup>2</sup>)</label>
+                            <input type="number" class="form-control form-control-sm" style="width: 200px" id="bmi" placeholder="in kg/m^2" style="width: min-content" name="bmi">
+                        </div>
+
+                    </div>
+                    <br>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <button type="submit" class="btn btn-primary btn-block" style="float: right">Predict!</button>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <button type="reset" class="btn btn-danger btn-block">Reset!</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-4" style="padding-left: 100px;">
+        <div class="card text-white bg-result-color mb-3" style="max-width: 18rem; text-align: center">
+            <div class="card-header">Diabetes Prediction for woman</div>
+            <div class="card-body">
+                <h5 class="card-title">Result</h5>
+                <p class="card-text" id="diabetes-prediciton-result">The result goes here</p>
+                <p class="card-text" id="diabetes-prediciton-result2">{{data}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+        <img src="{{url_for('static',filename='assets/healthcare-2.png')}}" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+        Healthyfy
+    </a>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#"></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"></a>
+            </li>
+        </ul>
+        <span class="navbar-text">
+      TARP PROJECT
+    </span>
+    </div>
+</nav>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<script src="{{url_for('static',filename='bootstrap-4.5.2-dist/js/bootstrap.min.js')}}"></script>
+</body>
+</html>
